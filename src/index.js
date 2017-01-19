@@ -22,6 +22,11 @@ const scroll = ({
 }, duration) => {
   const initialTop = window.pageYOffset
   const initialLeft = window.pageXOffset
+  
+  if (x === initialLeft && y === initialTop) {
+    return Promise.resolve()
+  }
+  
   return createAnimation((progress) => {
     window.scrollTo(
       (1 - progress) * initialLeft + x * progress,
